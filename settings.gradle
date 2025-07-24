@@ -1,0 +1,6 @@
+rootProject.name = 'bootcamp'
+include 'technology-api'
+include 'proyecto2'
+include 'proyecto3'
+include 'proyecto4'
+include 'proyecto5'
