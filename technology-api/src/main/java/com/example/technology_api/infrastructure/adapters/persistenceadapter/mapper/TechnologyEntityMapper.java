@@ -3,17 +3,28 @@ package com.example.technology_api.infrastructure.adapters.persistenceadapter.ma
 import com.example.technology_api.domain.model.Technology;
 import com.example.technology_api.infrastructure.adapters.persistenceadapter.entity.TechnologyEntity;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
 public interface TechnologyEntityMapper {
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "name", source = "name")
-    @Mapping(target = "description", source = "description")
-    Technology toModel(TechnologyEntity entity);
+    default Technology toModel(TechnologyEntity entity) {
+        if (entity == null) {
+            return null;
+        }
+        return new Technology(
+                entity.getId(),
+                entity.getName(),
+                entity.getDescription()
+        );
+    }
 
-    @Mapping(target = "id", source = "id")
-    @Mapping(target = "name", source = "name")
-    @Mapping(target = "description", source = "description")
-    TechnologyEntity toEntity(Technology technology);
+    default TechnologyEntity toEntity(Technology technology) {
+        if (technology == null) {
+            return null;
+        }
+        TechnologyEntity entity = new TechnologyEntity();
+        entity.setId(technology.id());
+        entity.setName(technology.name());
+        entity.setDescription(technology.description());
+        return entity;
+    }
 }

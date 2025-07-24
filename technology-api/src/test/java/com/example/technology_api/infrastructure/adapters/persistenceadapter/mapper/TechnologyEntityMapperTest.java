@@ -2,12 +2,20 @@ package com.example.technology_api.infrastructure.adapters.persistenceadapter.ma
 
 import com.example.technology_api.domain.model.Technology;
 import com.example.technology_api.infrastructure.adapters.persistenceadapter.entity.TechnologyEntity;
+import com.example.technology_api.infrastructure.entrypoints.mapper.TechnologyMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mapstruct.factory.Mappers;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class TechnologyEntityMapperTest {
-    private final TechnologyEntityMapper mapper = new TechnologyEntityMapperImpl();
+    private TechnologyEntityMapper mapper;
+
+    @BeforeEach
+    void setUp() {
+        mapper = Mappers.getMapper(TechnologyEntityMapper.class);
+    }
 
     @Test
     void testToModel() {

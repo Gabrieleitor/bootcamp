@@ -1,10 +1,11 @@
 package com.example.technology_api.infrastructure.entrypoints.dto;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 public class TechnologyDTO {
     private Long id;
     private String name;

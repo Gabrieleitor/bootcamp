@@ -2,6 +2,7 @@ package com.example.technology_api.infrastructure.entrypoints.mapper;
 
 import com.example.technology_api.domain.model.Technology;
 import com.example.technology_api.infrastructure.entrypoints.dto.TechnologyDTO;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 
@@ -9,7 +10,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TechnologyMapperTest {
 
-    private final TechnologyMapper mapper = new TechnologyMapperImpl();
+    private TechnologyMapper mapper;
+
+    @BeforeEach
+    void setUp() {
+        mapper = Mappers.getMapper(TechnologyMapper.class);
+    }
 
     @Test
     void testTechnologyDTOToTechnology() {
